@@ -1,15 +1,18 @@
 
+from os import curdir
+
+
 class Node:
     '''
-    each object has three cambers: data, left, right
+    each object has three chambers: data, left, right
     '''
     def __init__(self,data,left,right):
         self.data = data
         self.left = left 
         self.right = right
     
-    def __repr__(self):
-        return f"left: {self.left}, data: {self.data} ,right: {self.right}"
+    # def __repr__(self):
+    #     return f"left: {self.left}, data: {self.data} ,right: {self.right}"
 
 class BinaryTree:
     def __init__(self):
@@ -20,21 +23,27 @@ class BinaryTree:
 
         if self.root == None:
             self.root = new_node
-        elif (self.root != None) and (new_node.data < self.root.data):
+        
+        # data that are less than root
+        elif new_node.data < self.root.data:
             cursor = self.root
-            while( cursor != None):
+            #cursor.left = new_node
+            while(cursor.left):
                 cursor = cursor.left
-            cursor = new_node
-            
-        elif (self.root != None) and (new_node.data > self.root.data):
+            cursor.left = new_node
+        
+        elif new_node.data > self.root.data:
             cursor = self.root
-            while(cursor != None):
-                   cursor = cursor.right
-            cursor = new_node
-            x = None
-        else: print("invalid option")
-
+            #cursor.right = new_node
+            while(cursor.right):
+                cursor = cursor.right
+            cursor.right = new_node
+        else:
+            print("invalid  condition")
+        
+        
     def inorder_traversal(self):
+        print("inorder traversal:\n")
         cursor = self.root
         flag = True
         stack = []
@@ -50,19 +59,15 @@ class BinaryTree:
                 else: 
                     flag = False
     
-    def display(self):
-        print(f'left: {self.root.left}, root: {self.root.data}, right: {self.root.right} ')
-    
-
-
 
 if __name__ == '__main__':
 
     obj_BTree = BinaryTree()
     # number of nodes
     
-    data = [50,40,30]
+    data = [50,40,70]
     for i in data:
         obj_BTree.create_tree(i)
     
-    obj_BTree.display()
+    #obj_BTree.display()
+    obj_BTree.inorder_traversal()
