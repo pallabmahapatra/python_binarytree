@@ -1,7 +1,3 @@
-
-from os import curdir
-
-
 class Node:
     '''
     each object has three chambers: data, left, right
@@ -58,7 +54,19 @@ class BinaryTree:
                     cursor = cursor.right
                 else: 
                     flag = False
-    
+
+    def preorder_traversal(self):
+        print(f'preorder traversal ....\n')
+        if self.root:
+            current = self.root
+            temp_stack = []
+            temp_stack.append(current)
+            while(current):
+                data = 
+                print(current.data)
+
+
+        x = None
 
 if __name__ == '__main__':
 
@@ -70,4 +78,4 @@ if __name__ == '__main__':
         obj_BTree.create_tree(i)
     
     #obj_BTree.display()
-    obj_BTree.inorder_traversal()
+    obj_BTree.preorder_traversal()
