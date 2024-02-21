@@ -61,12 +61,15 @@ class BinaryTree:
             current = self.root
             temp_stack = []
             temp_stack.append(current)
-            while(current):
-                data = 
-                print(current.data)
-
-
-        x = None
+            while(len(temp_stack)):  # checking stack is not empty
+                poped_item = temp_stack.pop()  # taking out one item it each iteration from the stack
+                print(poped_item.data,end = ' ')
+                if poped_item.right:
+                    temp_stack.append(poped_item.right)
+                if poped_item.left:
+                    temp_stack.append(poped_item.left)
+        else:
+            print(f'root is empty')
 
 if __name__ == '__main__':
 
